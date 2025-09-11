@@ -15,6 +15,7 @@ function App() {
   // Add new task
   const addTask = () => {
     if (!task.trim()) return;
+    
 
     fetch("http://localhost:8000/tasks", {
       method: "POST",
