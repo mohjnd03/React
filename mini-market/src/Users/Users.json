@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@example.com",
+      "password": "password123",
+      "wishlist": [],
+      "favorites": []
+    },
+    {
+      "id": "6b78",
+      "email": "mohjnd123456@yahoo.com",
+      "password": "123456",
+      "wishlist": [],
+      "favorites": []
+    }
+  ]
+}

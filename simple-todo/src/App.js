@@ -1,51 +1,54 @@
-  import React, { useState, useEffect } from "react";
+// App.js (with Navbar added)
+import React, { useState, useEffect } from "react";
+import API_URL from "./config";
+import Navbar from "./Navbar";
 
-  function App() {
-    const [task, setTask] = useState("");
-    const [tasks, setTasks] = useState([]);
+function App() {
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
-    // Load tasks from server
-    useEffect(() => {
-      fetch("http://localhost:8000/tasks")
-        .then((res) => res.json())
-        .then((data) => setTasks(data))
-        .catch((err) => console.error(err));
-    }, []);
+  useEffect(() => {
+    fetch(`${API_URL}/tasks`)
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((err) => console.error(err));
+  }, []);
 
-    // Add new task
-    const addTask = () => {
-      if (!task.trim()) return;
+  const addTask = () => {
+    if (!task.trim()) {
+      setErrorMessage("Please write a task");
+      return;
+    }
 
-
-      fetch("http://localhost:8000/tasks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: task }),
+    fetch(`${API_URL}/tasks`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: task }),
+    })
+      .then((res) => res.json())
+      .then((newTask) => {
+        setTasks([...tasks, newTask]);
+        setTask("");
       })
-        .then((res) => res.json())
-        .then((newTask) => {
-          setTasks([...tasks, newTask]);
-          setTask("");
-        })
-        .catch((err) => console.error(err));
-    };
+      .catch((err) => console.error(err));
+  };
 
-    // Delete a task
-    const deleteTask = (idToDelete) => {
-      fetch(`http://localhost:8000/tasks/${idToDelete}`, { method: "DELETE" })
-        .then(() => setTasks(tasks.filter((t) => t.id !== idToDelete)))
-        .catch((err) => console.error(err));
-    };
+  const deleteTask = (idToDelete) => {
+    fetch(`${API_URL}/tasks/${idToDelete}`, { method: "DELETE" })
+      .then(() => setTasks(tasks.filter((t) => t.id !== idToDelete)))
+      .catch((err) => console.error(err));
+  };
 
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-purple-200 via-pink-100 to-yellow-50 p-4">
-        {/* Main Card */}
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-tr from-purple-200 via-pink-100 to-yellow-50">
+      <Navbar />
+      <div className="flex items-center justify-center p-4 flex-1">
         <div className="bg-white w-full max-w-md rounded-3xl shadow-xl p-6 flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-3xl">
           <h1 className="text-3xl font-bold text-center text-purple-800 mb-6">
             My Todo App
           </h1>
-
-          {/* Input Section */}
+          
           <div className="flex gap-2 mb-6">
             <input
               type="text"
@@ -62,7 +65,18 @@
             </button>
           </div>
 
-          {/* Tasks */}
+          {errorMessage && (
+            <div className="mb-4 p-3 rounded-xl bg-red-100 text-red-700 text-center font-medium shadow-md flex justify-between items-center">
+              <span>{errorMessage}</span>
+              <button
+                onClick={() => setErrorMessage("")}
+                className="ml-3 text-sm text-red-500 underline"
+              >
+                Close
+              </button>
+            </div>
+          )}
+
           <ul className="space-y-3">
             {tasks.map((t) => (
               <li
@@ -86,26 +100,24 @@
             </p>
           )}
 
-      <div className="numOfTasks mt-4 text-center">
-    <label className="text-sm text-gray-600">
-      Number of tasks: {tasks.length}
-    </label>
-  </div>
-    
-      <div className="deleteall mt-4">
-    <button
-      onClick={() => {
-        tasks.forEach((t) => deleteTask(t.id));
-      }}
-      className="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 transform hover:scale-105 transition duration-300 w-full"
-    >
-      Delete All
-    </button>
-  </div>
+          <div className="numOfTasks mt-4 text-center">
+            <label className="text-sm text-gray-600">Number of tasks: {tasks.length}</label>
+          </div>
 
+          <div className="deleteall mt-4">
+            <button
+              onClick={() => {
+                tasks.forEach((t) => deleteTask(t.id));
+              }}
+              className="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 transform hover:scale-105 transition duration-300 w-full"
+            >
+              Delete All
+            </button>
+          </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  export default App;
+export default App;

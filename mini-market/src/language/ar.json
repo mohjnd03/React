@@ -1,0 +1,81 @@
+{
+  "navbar": {
+    "home": "الرئيسية",
+    "cart": "العربة",
+    "wishlist": "قائمة الرغبات",
+    "favorites": "المفضلة",
+    "login": "تسجيل الدخول",
+    "register": "التسجيل",
+    "logout": "تسجيل الخروج",
+    "dark_mode": "الوضع الداكن",
+    "light_mode": "الوضع الفاتح",
+    "search_placeholder": "البحث عن المنتجات...",
+    "language": "English"
+  },
+  "home": {
+    "title": "كتالوج المنتجات",
+    "all_categories": "جميع الفئات",
+    "sort_title_asc": "العنوان A-Z",
+    "sort_title_desc": "العنوان Z-A",
+    "sort_price_asc": "السعر من الأقل إلى الأعلى",
+    "sort_price_desc": "السعر من الأعلى إلى الأقل"
+  },
+  "cart": {
+    "title": "عربتك",
+    "empty": "عربتك فارغة.",
+    "total": "الإجمالي",
+    "clear_cart": "إفراغ العربة"
+  },
+  "wishlist": {
+    "title": "قائمة رغباتك",
+    "empty": "قائمة رغباتك فارغة.",
+    "login_prompt": "يرجى تسجيل الدخول لعرض قائمة رغباتك."
+  },
+  "favorites": {
+    "title": "مفضلاتك",
+    "empty": "قائمة مفضلاتك فارغة.",
+    "login_prompt": "يرجى تسجيل الدخول لعرض مفضلاتك."
+  },
+  "product_card": {
+    "add_to_cart": "إضافة إلى العربة",
+    "view_details": "عرض التفاصيل",
+    "add_to_wishlist": "إضافة إلى قائمة الرغبات",
+    "remove_from_wishlist": "إزالة من قائمة الرغبات",
+    "add_to_favorites": "إضافة إلى المفضلة",
+    "remove_from_favorites": "إزالة من المفضلة"
+  },
+  "product_details": {
+    "add_to_cart": "إضافة إلى العربة",
+    "add_to_wishlist": "إضافة إلى قائمة الرغبات",
+    "remove_from_wishlist": "إزالة من قائمة الرغبات",
+    "add_to_favorites": "إضافة إلى المفضلة",
+    "remove_from_favorites": "إزالة من المفضلة"
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "email_placeholder": "البريد الإلكتروني",
+    "password_placeholder": "كلمة المرور",
+    "submit": "تسجيل الدخول",
+    "submitting": "جارٍ تسجيل الدخول...",
+    "no_account": "ليس لديك حساب؟",
+    "register_link": "التسجيل"
+  },
+  "register": {
+    "title": "التسجيل",
+    "email_placeholder": "البريد الإلكتروني",
+    "password_placeholder": "كلمة المرور",
+    "submit": "التسجيل",
+    "submitting": "جارٍ التسجيل...",
+    "has_account": "لديك حساب بالفعل؟",
+    "login_link": "تسجيل الدخول"
+  },
+  "not_found": {
+    "title": "الصفحة غير موجودة",
+    "message": "عذرًا! الصفحة التي تبحث عنها غير موجودة.",
+    "go_home": "الذهاب إلى الرئيسية"
+  },
+  "error": {
+    "generic": "خطأ: {{message}}",
+    "retry": "إعادة المحاولة"
+  }
+}

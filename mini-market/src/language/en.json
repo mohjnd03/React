@@ -1,0 +1,81 @@
+{
+  "navbar": {
+    "home": "Home",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "favorites": "Favorites",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode",
+    "search_placeholder": "Search products...",
+    "language": "عربي"
+  },
+  "home": {
+    "title": "Product Catalog",
+    "all_categories": "All Categories",
+    "sort_title_asc": "Title A-Z",
+    "sort_title_desc": "Title Z-A",
+    "sort_price_asc": "Price Low to High",
+    "sort_price_desc": "Price High to Low"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "total": "Total",
+    "clear_cart": "Clear Cart"
+  },
+  "wishlist": {
+    "title": "Your Wishlist",
+    "empty": "Your wishlist is empty.",
+    "login_prompt": "Please log in to view your wishlist."
+  },
+  "favorites": {
+    "title": "Your Favorites",
+    "empty": "Your favorites list is empty.",
+    "login_prompt": "Please log in to view your favorites."
+  },
+  "product_card": {
+    "add_to_cart": "Add to Cart",
+    "view_details": "View Details",
+    "add_to_wishlist": "Add to Wishlist",
+    "remove_from_wishlist": "Remove from Wishlist",
+    "add_to_favorites": "Add to Favorites",
+    "remove_from_favorites": "Remove from Favorites"
+  },
+  "product_details": {
+    "add_to_cart": "Add to Cart",
+    "add_to_wishlist": "Add to Wishlist",
+    "remove_from_wishlist": "Remove from Wishlist",
+    "add_to_favorites": "Add to Favorites",
+    "remove_from_favorites": "Remove from Favorites"
+  },
+  "login": {
+    "title": "Login",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "submit": "Login",
+    "submitting": "Logging in...",
+    "no_account": "Don't have an account?",
+    "register_link": "Register"
+  },
+  "register": {
+    "title": "Register",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "submit": "Register",
+    "submitting": "Registering...",
+    "has_account": "Already have an account?",
+    "login_link": "Login"
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "message": "Oops! The page you are looking for does not exist.",
+    "go_home": "Go to Home"
+  },
+  "error": {
+    "generic": "Error: {{message}}",
+    "retry": "Retry"
+  }
+}
