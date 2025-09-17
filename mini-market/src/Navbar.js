@@ -44,6 +44,26 @@ function Navbar({ setSearchQuery }) {
     navigate("/");
   };
 
+  // Added: Handler for Wishlist click
+  const handleWishlistClick = (e) => {
+    if (!user) {
+      alert("you need to have account");  // Popup
+      navigate("/login");
+      return;
+    }
+    // If logged in, do nothing (Link handles navigation)
+  };
+
+  // Added: Handler for Favorites click
+  const handleFavoritesClick = (e) => {
+    if (!user) {
+      alert("you need to have account");  // Popup
+      navigate("/login");
+      return;
+    }
+    // If logged in, do nothing (Link handles navigation)
+  };
+
   return (
     <nav className="bg-white dark:bg-gray-800 shadow p-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <div className="flex items-center gap-4">
@@ -64,32 +84,32 @@ function Navbar({ setSearchQuery }) {
             </span>
           )}
         </Link>
-        {user && (
-          <Link
-            to="/wishlist"
-            className="relative text-gray-800 dark:text-white font-semibold"
-          >
-            {t('navbar.wishlist')}
-            {wishlist.length > 0 && (
-              <span className="absolute -top-2 -right-3 bg-yellow-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {wishlist.length}
-              </span>
-            )}
-          </Link>
-        )}
-        {user && (
-          <Link
-            to="/favorites"
-            className="relative text-gray-800 dark:text-white font-semibold"
-          >
-            {t('navbar.favorites')}
-            {favorites.length > 0 && (
-              <span className="absolute -top-2 -right-3 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {favorites.length}
-              </span>
-            )}
-          </Link>
-        )}
+        {/* Always show Wishlist link with onClick handler */}
+        <Link
+          to="/wishlist"
+          onClick={handleWishlistClick}  // Added onClick
+          className="relative text-gray-800 dark:text-white font-semibold"
+        >
+          {t('navbar.wishlist')}
+          {wishlist.length > 0 && (  // Badge only if logged in and has items
+            <span className="absolute -top-2 -right-3 bg-yellow-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              {wishlist.length}
+            </span>
+          )}
+        </Link>
+        {/* Always show Favorites link with onClick handler */}
+        <Link
+          to="/favorites"
+          onClick={handleFavoritesClick}  // Added onClick
+          className="relative text-gray-800 dark:text-white font-semibold"
+        >
+          {t('navbar.favorites')}
+          {favorites.length > 0 && (  // Badge only if logged in and has items
+            <span className="absolute -top-2 -right-3 bg-pink-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              {favorites.length}
+            </span>
+          )}
+        </Link>
       </div>
 
       <input

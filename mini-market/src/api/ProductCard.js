@@ -1,16 +1,20 @@
-// src/api/ProductCard.js (updated: heart for favorites, new wishlist button)
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";  // Added useNavigate
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 
 function ProductCard({ product }) {
+  const navigate = useNavigate();  // Added
   const { addItem } = useCart();
   const { user, addToWishlist, removeFromWishlist, wishlist, addToFavorites, removeFromFavorites, favorites } = useAuth();
   const isInWishlist = wishlist.some((id) => id === product.id);
   const isInFavorites = favorites.some((id) => id === product.id);
 
   const handleWishlistToggle = () => {
+    if (!user) {
+      navigate("/login");  // Redirect to login if not logged in
+      return;
+    }
     if (isInWishlist) {
       removeFromWishlist(product.id);
     } else {
@@ -19,6 +23,10 @@ function ProductCard({ product }) {
   };
 
   const handleFavoritesToggle = () => {
+    if (!user) {
+      navigate("/login");  // Redirect to login if not logged in
+      return;
+    }
     if (isInFavorites) {
       removeFromFavorites(product.id);
     } else {
@@ -39,47 +47,43 @@ function ProductCard({ product }) {
       <p className="text-gray-500 text-xs mb-2 dark:text-gray-400">{product.category}</p>
       <p className="text-lg font-bold text-blue-600 mb-4 dark:text-blue-400">${product.price}</p>
       
-      {/* Favorites Button (Heart) */}
-      {user && (
-        <button
-          onClick={handleFavoritesToggle}
-          className={`mb-2 p-2 rounded-full transition ${
-            isInFavorites
-              ? "bg-red-500 text-white hover:bg-red-600"
-              : "bg-gray-200 text-gray-600 hover:bg-red-200 dark:bg-gray-700 dark:text-gray-400"
-          }`}
-          title={isInFavorites ? "Remove from Favorites" : "Add to Favorites"}
+      {/* Favorites Button (Heart) - Always shown */}
+      <button
+        onClick={handleFavoritesToggle}
+        className={`mb-2 p-2 rounded-full transition ${
+          isInFavorites
+            ? "bg-red-500 text-white hover:bg-red-600"
+            : "bg-gray-200 text-gray-600 hover:bg-red-200 dark:bg-gray-700 dark:text-gray-400"
+        }`}
+        title={isInFavorites ? "Remove from Favorites" : "Add to Favorites"}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill={isInFavorites ? "currentColor" : "none"}
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="w-5 h-5"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill={isInFavorites ? "currentColor" : "none"}
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
-        </button>
-      )}
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          />
+        </svg>
+      </button>
 
-      {/* Wishlist Button */}
-      {user && (
-        <button
-          onClick={handleWishlistToggle}
-          className={`mb-2 py-2 px-3 rounded-lg text-center transition ${
-            isInWishlist
-              ? "bg-yellow-500 text-white hover:bg-yellow-600"
-              : "bg-gray-200 text-gray-600 hover:bg-yellow-200 dark:bg-gray-700 dark:text-gray-400"
-          }`}
-        >
-          {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
-        </button>
-      )}
+      {/* Wishlist Button - Always shown */}
+      <button
+        onClick={handleWishlistToggle}
+        className={`mb-2 py-2 px-3 rounded-lg text-center transition ${
+          isInWishlist
+            ? "bg-yellow-500 text-white hover:bg-yellow-600"
+            : "bg-gray-200 text-gray-600 hover:bg-yellow-200 dark:bg-gray-700 dark:text-gray-400"
+        }`}
+      >
+        {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+      </button>
       
       <button
         onClick={() => addItem(product)}
