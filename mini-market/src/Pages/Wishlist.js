@@ -1,23 +1,18 @@
-// src/Pages/Wishlist.js (new)
 import React from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";  // Added for redirect
 import DataFetcher from "../api/DataFetcher";
 import { endpoints } from "../api/api";
 import ProductCard from "../api/ProductCard"; // Reuse for wishlist display
-import { Link } from "react-router-dom";
 
 function Wishlist() {
   const { wishlist, user, removeFromWishlist } = useAuth();
+  const navigate = useNavigate();  // Added
 
   if (!user) {
-    return (
-      <div className="p-6 text-center">
-        <p className="text-gray-600 dark:text-gray-300 mb-4">Please log in to view your wishlist.</p>
-        <Link to="/login" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Login
-        </Link>
-      </div>
-    );
+    // Auto-redirect to login on access (e.g., via navbar click)
+    navigate("/login");
+    return null;  // Or a loading spinner if needed
   }
 
   if (wishlist.length === 0) {
