@@ -12,7 +12,10 @@
       "email": "mohjnd123456@yahoo.com",
       "password": "123456",
       "wishlist": [],
-      "favorites": []
+      "favorites": [
+        10,
+        16
+      ]
     }
   ]
 }
