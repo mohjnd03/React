@@ -1,23 +1,19 @@
-// src/Pages/Favorites.js (new, for displaying favorites)
 import React from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";  // Keep this for redirect
 import DataFetcher from "../api/DataFetcher";
 import { endpoints } from "../api/api";
 import ProductCard from "../api/ProductCard";
-import { Link } from "react-router-dom";
+// Removed unused: import { Link } from "react-router-dom";
 
 function Favorites() {
   const { favorites, user, removeFromFavorites } = useAuth();
+  const navigate = useNavigate();
 
   if (!user) {
-    return (
-      <div className="p-6 text-center">
-        <p className="text-gray-600 dark:text-gray-300 mb-4">Please log in to view your favorites.</p>
-        <Link to="/login" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Login
-        </Link>
-      </div>
-    );
+    // Auto-redirect to login on access (e.g., via navbar click)
+    navigate("/login");
+    return null;  // Or a loading spinner if needed
   }
 
   if (favorites.length === 0) {
