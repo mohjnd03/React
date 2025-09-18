@@ -1,12 +1,15 @@
+// src/api/ProductCard.js (updated with full i18n translations integrated into the original code)
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";  // Added useNavigate
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();  // Added
   const { addItem } = useCart();
   const { user, addToWishlist, removeFromWishlist, wishlist, addToFavorites, removeFromFavorites, favorites } = useAuth();
+  const { t } = useTranslation();
   const isInWishlist = wishlist.some((id) => id === product.id);
   const isInFavorites = favorites.some((id) => id === product.id);
 
@@ -55,7 +58,7 @@ function ProductCard({ product }) {
             ? "bg-red-500 text-white hover:bg-red-600"
             : "bg-gray-200 text-gray-600 hover:bg-red-200 dark:bg-gray-700 dark:text-gray-400"
         }`}
-        title={isInFavorites ? "Remove from Favorites" : "Add to Favorites"}
+        title={t(isInFavorites ? "product_card.remove_from_favorites" : "product_card.add_to_favorites")}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -82,20 +85,20 @@ function ProductCard({ product }) {
             : "bg-gray-200 text-gray-600 hover:bg-yellow-200 dark:bg-gray-700 dark:text-gray-400"
         }`}
       >
-        {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+        {t(isInWishlist ? "product_card.remove_from_wishlist" : "product_card.add_to_wishlist")}
       </button>
       
       <button
         onClick={() => addItem(product)}
         className="bg-green-500 text-white text-center py-2 px-3 rounded-lg hover:bg-green-600 mb-2"
       >
-        Add to Cart
+        {t("product_card.add_to_cart")}
       </button>
       <Link
         to={`/product/${product.id}`}
         className="bg-blue-500 text-white text-center py-2 px-3 rounded-lg hover:bg-blue-600"
       >
-        View Details
+        {t("product_card.view_details")}
       </Link>
     </div>
   );

@@ -1,9 +1,9 @@
 {
   "navbar": {
     "home": "الرئيسية",
-    "cart": "العربة",
+    "cart": "السلة",
     "wishlist": "قائمة الرغبات",
-    "favorites": "المفضلة",
+    "favorites": "المفضلات",
     "login": "تسجيل الدخول",
     "register": "التسجيل",
     "logout": "تسجيل الخروج",
@@ -13,18 +13,18 @@
     "language": "English"
   },
   "home": {
-    "title": "كتالوج المنتجات",
+    "title": "🛍️ كتالوج المنتجات",
     "all_categories": "جميع الفئات",
-    "sort_title_asc": "العنوان A-Z",
-    "sort_title_desc": "العنوان Z-A",
+    "sort_title_asc": "العنوان أ-ي",
+    "sort_title_desc": "العنوان ي-أ",
     "sort_price_asc": "السعر من الأقل إلى الأعلى",
     "sort_price_desc": "السعر من الأعلى إلى الأقل"
   },
   "cart": {
-    "title": "عربتك",
-    "empty": "عربتك فارغة.",
+    "title": "سلتك",
+    "empty": "سلتك فارغة.",
     "total": "الإجمالي",
-    "clear_cart": "إفراغ العربة"
+    "clear_cart": "إفراغ السلة"
   },
   "wishlist": {
     "title": "قائمة رغباتك",
@@ -37,19 +37,20 @@
     "login_prompt": "يرجى تسجيل الدخول لعرض مفضلاتك."
   },
   "product_card": {
-    "add_to_cart": "إضافة إلى العربة",
+    "add_to_cart": "اضف الى السله",
     "view_details": "عرض التفاصيل",
     "add_to_wishlist": "إضافة إلى قائمة الرغبات",
     "remove_from_wishlist": "إزالة من قائمة الرغبات",
-    "add_to_favorites": "إضافة إلى المفضلة",
-    "remove_from_favorites": "إزالة من المفضلة"
+    "add_to_favorites": "إضافة إلى المفضلات",
+    "remove_from_favorites": "إزالة من المفضلات"
   },
   "product_details": {
-    "add_to_cart": "إضافة إلى العربة",
+    "add_to_cart": "اضف الى السله",
     "add_to_wishlist": "إضافة إلى قائمة الرغبات",
     "remove_from_wishlist": "إزالة من قائمة الرغبات",
-    "add_to_favorites": "إضافة إلى المفضلة",
-    "remove_from_favorites": "إزالة من المفضلة"
+    "add_to_favorites": "إضافة إلى المفضلات",
+    "remove_from_favorites": "إزالة من المفضلات",
+    "description_label": "الوصف"
   },
   "login": {
     "title": "تسجيل الدخول",
